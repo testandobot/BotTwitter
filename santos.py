@@ -11,8 +11,7 @@ class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
                 if status.user.screen_name == "SantosFC" and not "RT" in status.text:
                     print(status.text)
-                    try:
-                     # api.update_status("O MEU @SantosFC É SENSACIONAL", in_reply_to_status_id=status.id)
+                    try:                     
                      api.create_favorite(status.id)
                      # api.retweet(status.id)
                     except tweepy.TweepError as e:
