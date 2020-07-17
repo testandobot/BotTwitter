@@ -24,6 +24,8 @@ class MyStreamListener(tweepy.StreamListener):
                 else:
                     print("n")         
 
-myStreamListener = MyStreamListener()
-myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
-myStream.filter(follow=["49751816"])
+if __name__ == "__main__":
+    while True:
+        myStreamListener = MyStreamListener()
+        myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
+        myStream.filter(follow=["49751816"])
