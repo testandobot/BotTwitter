@@ -21,6 +21,7 @@ if __name__ == "__main__":
                 if status.user.screen_name == "SantosFC" and not "RT" in status.text:
                      try:
                          api.create_favorite(status.id)
+                         print(status.text)
                      except tweepy.TweepError as e:
                          print(e.reason)
                 else:
