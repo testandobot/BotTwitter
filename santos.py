@@ -21,6 +21,8 @@ class MyStreamListener(tweepy.StreamListener):
                      api.create_favorite(status.id)
                     except tweepy.TweepError as e:
                      print(e.reason)
+                else:
+                    print("ainda não")     
 
 myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
