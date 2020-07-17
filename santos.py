@@ -12,19 +12,20 @@ ACCESS_SECRET = os.environ.get('ACCESS_SECRET')
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
-print(api.me())
-class MyStreamListener(tweepy.StreamListener):
-    def on_status(self, status):
-      if status.user.screen_name == "SantosFC" and not "RT" in status.text:
-          try:
-              api.create_favorite(status.id)
-          except tweepy.TweepError as e:
-              print(e.reason)
-      else:
-          print("n")                
+print(api.me())               
 
 if __name__ == "__main__":
     while True:
+        class MyStreamListener(tweepy.StreamListener):
+            def on_status(self, status):
+                if status.user.screen_name == "SantosFC" and not "RT" in status.text:
+                     try:
+                         api.create_favorite(status.id)
+                     except tweepy.TweepError as e:
+                         print(e.reason)
+                else:
+                    print("n")  
+                                                      
         myStreamListener = MyStreamListener()
         myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
         myStream.filter(follow=["49751816"])
