@@ -19,7 +19,6 @@ class MyStreamListener(tweepy.StreamListener):
                     try:
                      print(status.text)
                      api.create_favorite(status.id)
-                     api.retweet(status.id)
                     except tweepy.TweepError as e:
                      print(e.reason)
 
